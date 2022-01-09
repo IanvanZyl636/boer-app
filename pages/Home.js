@@ -1,39 +1,18 @@
-import React from 'react';
-import {StyleSheet, Text, View, Image, Button} from 'react-native';
+import * as React from 'react';
+import {Text, View, Button} from 'react-native';
 import auth from '@react-native-firebase/auth';
 
-export default function Home() {
-  const user = auth().currentUser;
+export default function Home({navigation}) {
   return (
-    <View style={styles.screen}>
-      <Text style={styles.title}>You're Logged In</Text>
-      <Image source={{uri: user?.photoURL}} style={styles.image} />
-      <Text style={styles.text}>{user?.displayName}</Text>
-      <Text style={styles.text}>{user?.email}</Text>
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Home Screen</Text>
+      <Button
+        title="Go to Farm Section"
+        onPress={() => navigation.navigate('FarmSection')}
+      />
       <View style={{marginTop: 30}}>
         <Button title="Signout" onPress={() => auth().signOut()} />
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 25,
-    marginBottom: 30,
-  },
-  image: {
-    height: 150,
-    width: 150,
-    borderRadius: 150,
-    marginBottom: 20,
-  },
-  text: {
-    fontSize: 20,
-  },
-});

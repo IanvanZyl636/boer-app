@@ -5,7 +5,7 @@ import {
   GoogleSigninButton,
   GoogleSignin,
 } from '@react-native-google-signin/google-signin';
-import Home from './Home';
+import Navigation from './Navigation';
 import {FIREBASE_WEB_CLIENT_ID} from '@env';
 
 export default function Authentication() {
@@ -32,11 +32,7 @@ export default function Authentication() {
   }
 
   if (authenticated) {
-    return (
-      <View style={styles.container}>
-        <Home />
-      </View>
-    );
+    return <Navigation />;
   }
 
   return (
